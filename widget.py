@@ -14,3 +14,11 @@ def disguise_widget(card_info: str) -> str:
 def return_date(date_string: str) -> str:
     """Принимает строку с данными и возвращает дату в формате dd.mm.yyyy"""
     return ".".join(date_string.split("T")[0].split("-")[::-1])
+
+
+def new_list(args_list: list) -> list:
+    """Принимает на вход список строк и возвращает список строк, в которых первая и последняя буквы совпадают.
+    Если список пустой, возвращает пустой список."""
+    if len(args_list) == 0:
+        return args_list
+    return [word for word in args_list if len(word) == 0 or word.lower()[0] == word.lower()[-1]]
