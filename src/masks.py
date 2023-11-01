@@ -1,11 +1,9 @@
 import os
-import textwrap
 
 
 def disguise_card(card_number: str) -> str:
     """Возвращается маска карты"""
-    card_mask = "".join([card_number[ind] if ind < 6 or ind > 11 else "*" for ind in range(16)])
-    return " ".join(textwrap.wrap(card_mask, 4))
+    return " ".join([card_number[:4], card_number[4:6] + "**", "****", card_number[12:]])
 
 
 def disguise_acc_number(acc_number: str) -> str:
@@ -23,5 +21,3 @@ def files_counter(way: str, req_flag: bool = False) -> dict:
         for _ in files:
             files_counter += 1
     return {"files": files_counter, "folders": folders_counter}
-
-
