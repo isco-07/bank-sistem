@@ -12,12 +12,12 @@ def disguise_acc_number(acc_number: str) -> str:
     return acc_number_mask
 
 
-def files_counter(way: str, req_flag: bool = False) -> dict:
-    folders_counter = 0
-    files_counter = 0
-    for root, dirs, files in os.walk(way):
-        for _ in dirs:
-            folders_counter += 1
-        for _ in files:
-            files_counter += 1
-    return {"files": files_counter, "folders": folders_counter}
+# def files_counter(way: str, req_flag: bool = False) -> dict:
+#     folders_counter = 0
+#     files_counter = 0
+#     for root, dirs, files in os.walk(way):
+#         for _ in dirs:
+#             folders_counter += 1
+#         for _ in files:
+#             files_counter += 1
+#     return {"files": files_counter, "folders": folders_counter}

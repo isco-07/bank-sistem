@@ -17,12 +17,12 @@ def dict_list_by_date(dict_list: list, sort_rev: bool = False) -> list:
     )
 
 
-def make_sort_list_products(dict_list: list, category: str | None = None) -> list:
-    """Функция принимает 2 параметра: список словарей с продуктами, необязательный параметр category.
-    Возвращает отсоритрованный список словарей по убыванию ключа price определенной категории
-    товаров, если category не None, или список всех продуктов"""
-    if category is None:
-        return sorted(dict_list, key=lambda x: int(x["price"]), reverse=True)
-    return sorted(
-        list(filter(lambda x: x["category"] == category, dict_list)), key=lambda x: int(x["price"]), reverse=True
-    )
+# def make_sort_list_products(dict_list: list, category: str | None = None) -> list:
+#     """Функция принимает 2 параметра: список словарей с продуктами, необязательный параметр category.
+#     Возвращает отсоритрованный список словарей по убыванию ключа price определенной категории
+#     товаров, если category не None, или список всех продуктов"""
+#     if category is None:
+#         return sorted(dict_list, key=lambda x: int(x["price"]), reverse=True)
+#     return sorted(
+#         list(filter(lambda x: x["category"] == category, dict_list)), key=lambda x: int(x["price"]), reverse=True
+#     )
