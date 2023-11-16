@@ -1,4 +1,5 @@
 import json
+from typing import Any
 
 
 def deserialization_json_file(json_path: str) -> list:
@@ -11,11 +12,12 @@ def deserialization_json_file(json_path: str) -> list:
         return []
 
 
-def sum_of_transactions(transaction: dict) -> float | ValueError:
+def sum_of_transactions(transaction: dict) -> float | Any:
     """Функция принимает словарь transaction и возвращает результат по ключу amount типа float или
     ValueError с сообщением 'Транзация выполнена не в рублях. Укажите транзакцию в рублях' если транзакция
     проведена не в рублях"""
     if transaction["operationAmount"]["currency"]["code"] == "RUB":
         return float(transaction["operationAmount"]["amount"])
     else:
-        return ValueError("Транзация выполнена не в рублях. Укажите транзакцию в рублях")
+        print("Транзация выполнена не в рублях. Укажите транзакцию в рублях")
+        return ValueError
