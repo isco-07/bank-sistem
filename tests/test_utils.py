@@ -7,7 +7,7 @@ from src.utils import deserialization_json_file, sum_of_transactions
     "ind, expected",
     [
         (
-            "operations.json",
+            "../data/operations.json",
             {
                 "id": 441945886,
                 "state": "EXECUTED",
@@ -31,10 +31,19 @@ def test_deserialization_json_file(ind: str, expected: float | ValueError) -> No
 
 
 @pytest.fixture
-def foo() -> list:
-    return [31957.58, ValueError, ValueError, 48223.05]
+def foo() -> dict:
+    return {
+        "id": 41428829,
+        "state": "EXECUTED",
+        "date": "2019-07-03T18:35:29.512364",
+        "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "MasterCard 7158300734726758",
+        "to": "Счет 35383033474447895560",
+    }
 
 
-def test_sum_of_transactions(foo: list) -> None:
-    for i in range(4):
-        assert sum_of_transactions(deserialization_json_file("operations.json")[i]) == foo[i]
+def test_sum_of_transactions(foo: dict) -> None:
+    with pytest.raises(ValueError):
+        assert sum_of_transactions(foo)
+    assert sum_of_transactions(deserialization_json_file("../data/operations.json")[0]) == 31957.58
