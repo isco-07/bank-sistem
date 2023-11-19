@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 from src.utils import deserialization_json_file, sum_of_transactions
@@ -46,4 +48,5 @@ def foo() -> dict:
 def test_sum_of_transactions(foo: dict) -> None:
     with pytest.raises(ValueError):
         assert sum_of_transactions(foo)
-    assert sum_of_transactions(deserialization_json_file("../data/operations.json")[0]) == 31957.58
+    way_to_file = os.path.join(os.path.dirname(__file__), "..", "data", "operations.json")
+    assert sum_of_transactions(deserialization_json_file(way_to_file)[0]) == 31957.58
