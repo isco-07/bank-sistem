@@ -1,4 +1,17 @@
 import json
+import logging
+from typing import Any
+
+
+def utils_logging() -> Any:
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filename="logging_utils.log",
+        filemode="w",
+        format="%(asctime)s %(name)s %(levelname)s: %(message)s",
+        encoding="utf-8",
+    )
+    return logging.getLogger()
 
 
 def deserialization_json_file(json_path: str) -> list:
